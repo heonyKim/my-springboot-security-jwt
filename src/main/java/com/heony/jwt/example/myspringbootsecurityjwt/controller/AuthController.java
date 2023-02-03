@@ -1,5 +1,7 @@
 package com.heony.jwt.example.myspringbootsecurityjwt.controller;
 
+import com.heony.jwt.example.myspringbootsecurityjwt.exception.BaseException;
+import com.heony.jwt.example.myspringbootsecurityjwt.exception.ErrorMessage;
 import com.heony.jwt.example.myspringbootsecurityjwt.model.MemberRequestDto;
 import com.heony.jwt.example.myspringbootsecurityjwt.model.MemberResponseDto;
 import com.heony.jwt.example.myspringbootsecurityjwt.model.TokenDto;
@@ -21,8 +23,8 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    private ResponseEntity<MemberResponseDto> signUp(@RequestBody MemberRequestDto memberRequestDto){
-        return ResponseEntity.ok(authService.signUp(memberRequestDto));
+    private MemberResponseDto signUp(@RequestBody MemberRequestDto memberRequestDto){
+        return authService.signUp(memberRequestDto);
     }
 
     @PostMapping("/login")
