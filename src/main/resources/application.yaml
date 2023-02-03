@@ -20,7 +20,8 @@ spring:
     database: mysql
 #    database: h2
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: validate
+      ## create, create-drop, update, validate, none
     properties:
       hibernate:
         format_sql: true
@@ -33,6 +34,7 @@ spring:
 logging:
   level:
     com.heony: debug
+    root: info
 
 ########### this is secret!! #############
 jwt:
