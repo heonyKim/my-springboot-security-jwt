@@ -1,14 +1,14 @@
 package com.heony.jwt.example.myspringbootsecurityjwt.controller;
 
-import com.heony.jwt.example.myspringbootsecurityjwt.exception.BaseException;
-import com.heony.jwt.example.myspringbootsecurityjwt.exception.ErrorMessage;
 import com.heony.jwt.example.myspringbootsecurityjwt.model.MemberRequestDto;
 import com.heony.jwt.example.myspringbootsecurityjwt.model.MemberResponseDto;
 import com.heony.jwt.example.myspringbootsecurityjwt.model.TokenDto;
 import com.heony.jwt.example.myspringbootsecurityjwt.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -28,12 +28,12 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    private ResponseEntity<TokenDto> login(@RequestBody MemberRequestDto memberRequestDto, HttpServletResponse response){
-        return ResponseEntity.ok(authService.login(memberRequestDto, response));
+    private TokenDto login(@RequestBody MemberRequestDto memberRequestDto, HttpServletResponse response){
+        return authService.login(memberRequestDto, response);
     }
 
     @PostMapping("/reissue")
-    private ResponseEntity<TokenDto> reissue(@RequestBody TokenDto tokenDto, HttpServletResponse response){
-        return ResponseEntity.ok(authService.reissue(tokenDto, response));
+    private TokenDto reissue(@RequestBody TokenDto tokenDto, HttpServletResponse response){
+        return authService.reissue(tokenDto, response);
     }
 }
