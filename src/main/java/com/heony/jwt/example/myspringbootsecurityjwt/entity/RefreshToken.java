@@ -12,24 +12,22 @@ import javax.persistence.Table;
 //@Table
 @Getter
 @NoArgsConstructor
-@Entity(name = "refresh_token")
+@Entity
 public class RefreshToken {
 
     @Id
-    @Column(name = "rt_key")
-    private String key;
+    private String rtKey;
 
-    @Column(name = "rt_value")
-    private String value;
+    private String rtValue;
 
     @Builder
-    public RefreshToken(String key, String value) {
-        this.key = key;
-        this.value = value;
+    public RefreshToken(String rtKey, String rtValue) {
+        this.rtKey = rtKey;
+        this.rtValue = rtValue;
     }
 
     public RefreshToken updateValue(String token){
-        this.value = token;
+        this.rtKey = token;
         return this;
     }
 

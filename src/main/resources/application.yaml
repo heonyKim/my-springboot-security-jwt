@@ -22,6 +22,12 @@ spring:
     hibernate:
       ddl-auto: validate
       ## create, create-drop, update, validate, none
+      naming:
+#        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+#        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+        physical-strategy: com.heony.jwt.example.myspringbootsecurityjwt.config.CustomNamingStrategy
+
+
     properties:
       hibernate:
         format_sql: true
